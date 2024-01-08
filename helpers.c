@@ -1,8 +1,11 @@
 #include "helpers.h"
+#include "helpers.h"
 #include <stdlib.h>
+#include <time.h>
 
 void colorize(int height, int width, RGBTRIPLE image[height][width])
 {
+    srand(time(NULL));
     for (int i = 0; i < height; i++)
     {
         int blue = rand() % 256;
