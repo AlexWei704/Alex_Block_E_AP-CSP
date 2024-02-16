@@ -105,13 +105,27 @@ def hangman(correct_word):
         score = 0
 
 def display_menu(top_score, top_player):
-    print("____________________________________\n")
+    print("________________________________________________________________________\n")
     print("Welcome to the Word Games!")
-    print(f"Current Top Score: {top_score} by {top_player}")
+    print("Here you can test your word guessing skills in two different games.")
+    print(f"\nCurrent Top Score: {top_score} by {top_player}")
+    print("\nInstructions:")
+    print("Wordle: Guess the secret word with feedback on each letter's accuracy.\nYou have six attempts to guess a word. Each guess provides feedback \non correct letters and their positions.")
+    print("\nHangman: Guess the secret word one letter at a time, with limited \nwrong guesses. Try to guess the word before you run out of attempts. \nEach incorrect letter guess brings you closer to losing.")
+    print("\nChoose an option to start playing:")
     print("1. Play Wordle")
     print("2. Play Hangman")
-    print("3. Exit")
-    print("____________________________________")
+    print("3. Exit - Exit the game and save your score.")
+    print("________________________________________________________________________")
+
+def display_short_menu(top_score, top_player):
+    print("________________________________________________________________________\n")
+    print(f"Current Top Score: {top_score} by {top_player}")
+    print("\nChoose an option to play:")
+    print("1. Play Wordle")
+    print("2. Play Hangman")
+    print("3. Exit - Exit the game and save your score.")
+    print("________________________________________________________________________")
 
 def read_top_score():
     try:
@@ -128,9 +142,9 @@ def write_top_score(score, player):
 def main():
     top_score, top_player = read_top_score()
     print(f"Current Top Score: {top_score} by {top_player}")
+    display_menu(top_score, top_player)
 
     while True:
-        display_menu(top_score, top_player)
         choice = input("Enter your choice: ")
 
         if choice == '3' or choice == 'exit' or choice == 'Exit':
@@ -157,6 +171,8 @@ def main():
             top_score, top_player = score, player_name
             write_top_score(score, player_name)
             print(f"New top score: {top_score} by {top_player}")
+
+        display_short_menu(top_score, top_player)
 
 if __name__ == "__main__":
     main()
